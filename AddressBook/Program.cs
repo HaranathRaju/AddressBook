@@ -18,6 +18,7 @@ namespace AddressBook
             while (true)
             {
                 Console.WriteLine("1.Add contact");
+                Console.WriteLine("2.Edit contact");
 
                 Console.WriteLine("enter choice: ");
                 int choice = Convert.ToInt32(Console.ReadLine());
@@ -26,26 +27,50 @@ namespace AddressBook
                     case 1:
                         {
                             Console.WriteLine("enter first name: ");
-                            string firstname=Console.ReadLine();
+                            string firstname = Console.ReadLine();
                             Console.WriteLine("enter last name: ");
-                            string lastname=Console.ReadLine();   
+                            string lastname = Console.ReadLine();
                             Console.WriteLine("enter address: ");
-                            string address=Console.ReadLine();
+                            string address = Console.ReadLine();
                             Console.WriteLine("enter city: ");
-                            string city=Console.ReadLine(); 
+                            string city = Console.ReadLine();
                             Console.WriteLine("enter state: ");
-                            string state=Console.ReadLine();
+                            string state = Console.ReadLine();
                             Console.WriteLine("enter zip: ");
-                            string zip=Console.ReadLine();
+                            string zip = Console.ReadLine();
                             Console.WriteLine("enter phone number: ");
-                            string phonenumber=Console.ReadLine();  
+                            string phonenumber = Console.ReadLine();
                             Console.WriteLine("enter email: ");
-                            string email=Console.ReadLine();
+                            string email = Console.ReadLine();
                             Contact c = new Contact(firstname, lastname, address, city, state, zip, phonenumber, email);
                             addressbook.addContact(c);
                             break;
 
                         }
+                    case 2:
+                        {
+                            Console.WriteLine("enter first name: ");
+                            string firstname = Console.ReadLine();
+                            Console.WriteLine("enter last name: ");
+                            string lastname = Console.ReadLine();
+                            Console.WriteLine("enter address: ");
+                            string address = Console.ReadLine();
+                            Console.WriteLine("enter city: ");
+                            string city = Console.ReadLine();
+                            Console.WriteLine("enter state: ");
+                            string state = Console.ReadLine();
+                            Console.WriteLine("enter zip: ");
+                            string zip = Console.ReadLine();
+                            Console.WriteLine("enter phone number: ");
+                            string phonenumber = Console.ReadLine();
+                            Console.WriteLine("enter email: ");
+                            string email = Console.ReadLine();
+                            addressbook.editContact(firstname, lastname, address, city, state, zip, phonenumber, email);
+                            break;
+
+                        }
+
+                
                 }
             }
 
