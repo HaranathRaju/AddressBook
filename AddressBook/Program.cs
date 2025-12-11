@@ -19,6 +19,7 @@ namespace AddressBook
             {
                 Console.WriteLine("1.Add contact");
                 Console.WriteLine("2.Edit contact");
+                Console.WriteLine("3.Delete contact");
 
                 Console.WriteLine("enter choice: ");
                 int choice = Convert.ToInt32(Console.ReadLine());
@@ -69,7 +70,16 @@ namespace AddressBook
                             break;
 
                         }
+                    case 3:
+                        {
+                            Console.WriteLine("enter first name: ");
+                            string firstname = Console.ReadLine();
+                            Console.WriteLine("enter last name: ");
+                            string lastname = Console.ReadLine();
+                            addressbook.deleteContact(firstname, lastname);
+                            break;
 
+                        }
                 
                 }
             }

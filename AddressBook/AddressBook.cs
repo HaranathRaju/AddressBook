@@ -37,7 +37,22 @@ namespace AddressBook
             }
             Console.WriteLine("contact not found");
         
+        }
+
+        public void deleteContact(string firstname,string lastname)
+        {
+            for (int i = 0; i < contacts.Count;i++)
+            {
+                if (contacts[i].FirstName.Equals(firstname) && contacts[i].LastName.Equals(lastname))
+                {
+                    contacts.RemoveAt(i);
+                    Console.WriteLine("contact deleted successfully");
+                    return;
+                }
+            }
+            Console.WriteLine("contact not found");
 
         }
+
     }
 }
