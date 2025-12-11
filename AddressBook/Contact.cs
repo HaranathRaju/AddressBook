@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace AddressBook
 {
@@ -25,11 +26,28 @@ namespace AddressBook
 
         public string Email { get; set; }
 
+        string emailpattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+        string phonenumberpattern= @"^\d{10}$";
+
+
+
         public Contact() { }
 
         public Contact(string firstName, string lastName, string address, string city,
                        string state, string zip, string phoneNumber, string email)
         {
+
+            if (!Regex.IsMatch(phoneNumber,phonenumberpattern))
+            {
+                throw new InvalidPhoneNumberException("phone number is invalid");
+
+            }
+            if (!Regex.IsMatch(email,emailpattern))
+            {
+                throw new InvaliEmailException("email is invalid");
+
+            }
+
             FirstName = firstName;
             LastName = lastName;
             Address = address;
@@ -38,6 +56,11 @@ namespace AddressBook
             Zip = zip;
             PhoneNumber = phoneNumber;
             Email = email;
+        }
+
+        public override string ToString()
+        {
+            return $"Name: {FirstName} {LastName} Address: {Address} {City} {State} {Zip} PhoneNumber: {PhoneNumber} Email: {Email}";
         }
     }
 }

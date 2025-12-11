@@ -54,5 +54,13 @@ namespace AddressBook
 
         }
 
+        public void displayContacts()
+        {
+            foreach(Contact i in contacts)
+            {
+                Console.WriteLine(i);
+            }
+        }
+
     }
 }
