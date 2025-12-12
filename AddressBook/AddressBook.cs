@@ -12,8 +12,16 @@ namespace AddressBook
 
         public void addContact(Contact c)
         {
+            foreach(Contact i in contacts)
+            {
+                if (i.Equals(c))
+                {
+                    Console.WriteLine("cannot add duplicate contact");
+                    return;
+                }
+            }
             contacts.Add(c);
-            Console.WriteLine("contact added successfully");
+            Console.WriteLine("Contact added succesfully");
         }
 
         public void editContact(string firstname, string lastname, string address, string city, string state, string zip, string phonenumber, string email)
@@ -31,17 +39,15 @@ namespace AddressBook
                     i.Email = email;
                     Console.WriteLine("contact edited succesfully");
                     return;
-
                 }
-
             }
             Console.WriteLine("contact not found");
-        
+
         }
 
-        public void deleteContact(string firstname,string lastname)
+        public void deleteContact(string firstname, string lastname)
         {
-            for (int i = 0; i < contacts.Count;i++)
+            for (int i = 0; i < contacts.Count; i++)
             {
                 if (contacts[i].FirstName.Equals(firstname) && contacts[i].LastName.Equals(lastname))
                 {
@@ -56,7 +62,7 @@ namespace AddressBook
 
         public void displayContacts()
         {
-            foreach(Contact i in contacts)
+            foreach (Contact i in contacts)
             {
                 Console.WriteLine(i);
             }

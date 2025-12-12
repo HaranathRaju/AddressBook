@@ -15,12 +15,16 @@ namespace AddressBook
         {
             Console.WriteLine(" Welcome To AddressBook ");
             AddressBook addressbook = new AddressBook();
+            AddressBookManager addressbookmanager=new AddressBookManager();
+
+
             while (true)
             {
                 Console.WriteLine("1.Add contact");
                 Console.WriteLine("2.Edit contact");
                 Console.WriteLine("3.Delete contact");
                 Console.WriteLine("4.Display contacts");
+                Console.WriteLine("5.Add Multiple addressbook");
 
                 Console.WriteLine("enter choice: ");
                 int choice = Convert.ToInt32(Console.ReadLine());
@@ -89,6 +93,14 @@ namespace AddressBook
                                 addressbook.displayContacts();
                                 break;
                             }
+                        case 5:
+                            {
+                                Console.WriteLine("enter the name of addressbook: ");
+                                string name=Console.ReadLine();
+                                addressbookmanager.addAddressBook(name);
+                                break;
+                            }
+                        
 
                     }
 
