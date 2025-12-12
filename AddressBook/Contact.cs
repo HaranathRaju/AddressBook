@@ -30,7 +30,6 @@ namespace AddressBook
         string phonenumberpattern= @"^\d{10}$";
 
 
-
         public Contact() { }
 
         public Contact(string firstName, string lastName, string address, string city,
@@ -56,6 +55,23 @@ namespace AddressBook
             Zip = zip;
             PhoneNumber = phoneNumber;
             Email = email;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+                return false;
+
+            Contact other = (Contact)obj;
+
+            return (this.FirstName == other.FirstName
+                && this.LastName == other.LastName) || this.PhoneNumber==other.PhoneNumber
+                || this.Email==other.Email;   
+        }
+
+        public override int GetHashCode()
+        {
+            return (FirstName + LastName + PhoneNumber + Email ).GetHashCode();
         }
 
         public override string ToString()
