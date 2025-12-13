@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace AddressBook
 {
@@ -82,11 +83,25 @@ namespace AddressBook
                 foreach(var j in i.Value)
                 {
                     Console.WriteLine(j);   
-                    
-
                 }
             }
         }
+        public void displayContactsByCity()
+        {
+            var allcontacts = addressbooks.Values.SelectMany(n => n.getContacts());
 
+            var groupbycitycontacts = allcontacts.GroupBy(n => n.City);
+
+            Dictionary<string, List<Contact>> citydict = groupbycitycontacts.ToDictionary(n => n.Key ,n => n.ToList());
+
+            foreach(var i in citydict)
+            {
+                Console.WriteLine(i);
+                foreach( var j in i.Value)
+                {
+                    Console.WriteLine(j);
+                }
+            }
+        }
     }
 }
