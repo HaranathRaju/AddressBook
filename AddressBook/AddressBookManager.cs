@@ -10,8 +10,7 @@ namespace AddressBook
     {
         Dictionary<string,AddressBook> addressbooks=new Dictionary<string, AddressBook> ();
 
-        Dictionary<string,List<Contact>> citydict=new Dictionary<string, List<Contact>>();
-        Dictionary<string,List<Contact>> statedict=new Dictionary<string, List<Contact>>();
+        
 
 
         public void addAddressBook(string name)
@@ -68,5 +67,26 @@ namespace AddressBook
                 Console.WriteLine("contact not found");
             }
         }
+
+        public void displayContactsByState()
+        {
+            var allcontacts = addressbooks.Values.SelectMany(n => n.getContacts());
+
+            var groupbystatecontacts = allcontacts.GroupBy(p => p.State);
+
+            Dictionary<string, List<Contact>> statedict = groupbystatecontacts.ToDictionary(n => n.Key, n => n.ToList());
+
+            foreach( var i in statedict)
+            {
+                Console.WriteLine(i.Key);
+                foreach(var j in i.Value)
+                {
+                    Console.WriteLine(j);   
+                    
+
+                }
+            }
+        }
+
     }
 }
