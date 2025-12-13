@@ -25,6 +25,7 @@ namespace AddressBook
                 Console.WriteLine("3.Delete contact");
                 Console.WriteLine("4.Display contacts");
                 Console.WriteLine("5.Add Multiple addressbook");
+                Console.WriteLine("6.Display Addressbook");
 
                 Console.WriteLine("enter choice: ");
                 int choice = Convert.ToInt32(Console.ReadLine());
@@ -93,15 +94,37 @@ namespace AddressBook
                                 addressbook.displayContacts();
                                 break;
                             }
-                        case 5:
+                        case 5: 
                             {
-                                Console.WriteLine("enter the name of addressbook: ");
-                                string name=Console.ReadLine();
-                                addressbookmanager.addAddressBook(name);
+                                Console.Write("Enter AddressBook name: ");
+                                string name = Console.ReadLine();
+
+                                if (addressbookmanager.getAddressBook(name) == null)
+                                {
+                                    addressbookmanager.addAddressBook(name);
+                                }
+
+                                addressbook = addressbookmanager.getAddressBook(name);
+                                Console.WriteLine($"AddressBook {name} selected");
                                 break;
                             }
-                        
 
+                        case 6: 
+                            {
+                                addressbookmanager.displayAddressBook();
+
+                                Console.Write("Enter AddressBook name to select: ");
+                                string name = Console.ReadLine();
+
+                                if (!string.IsNullOrEmpty(name))
+                                {
+                                    addressbook = addressbookmanager.getAddressBook(name);
+                                    if (addressbook != null)
+                                        Console.WriteLine($"AddressBook '{name}' selected");
+                                }
+
+                                break;
+                            }
                     }
 
                 }
@@ -109,7 +132,6 @@ namespace AddressBook
                 {
                     Console.WriteLine(e.Message);
                 }
-
                 catch(InvaliEmailException e)
                 {
                     Console.WriteLine(e.Message);   
@@ -118,9 +140,7 @@ namespace AddressBook
                 {
                     Console.WriteLine(e.Message);
                 }
-                
             }
-
         }
     }
 }
