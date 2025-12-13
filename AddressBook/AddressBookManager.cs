@@ -103,5 +103,35 @@ namespace AddressBook
                 }
             }
         }
+
+        public void countByState()
+        {
+            var allcontacts = addressbooks.Values.SelectMany(n => n.getContacts());
+
+            var groupbystatecontacts = allcontacts.GroupBy(n => n.State);
+
+            Dictionary<string, int> statedict = groupbystatecontacts.ToDictionary(n => n.Key, n => n.Count());
+
+            foreach(var i in statedict)
+            {
+                Console.WriteLine("Contacts from "+i.Key +" : "+i.Value);
+            }
+
+        }
+        public void countByCity()
+        {
+            var allcontacts = addressbooks.Values.SelectMany(n => n.getContacts());
+
+            var groupbycitycontacts = allcontacts.GroupBy(n => n.City);
+
+            Dictionary<string, int> citydict = groupbycitycontacts.ToDictionary(n => n.Key, n => n.Count());
+
+            foreach (var i in citydict)
+            {
+                Console.WriteLine("Contacts from "+i.Key + " : " + i.Value);
+            }
+
+        }
+
     }
 }

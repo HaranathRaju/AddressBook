@@ -29,6 +29,8 @@ namespace AddressBook
                 Console.WriteLine("7.search contacts by city");
                 Console.WriteLine("8.display contacts by state");
                 Console.WriteLine("9.display contacts by city");
+                Console.WriteLine("10.display count by state");
+                Console.WriteLine("11.display count by city");
 
                 Console.WriteLine("enter choice: ");
                 int choice = Convert.ToInt32(Console.ReadLine());
@@ -146,6 +148,16 @@ namespace AddressBook
                                 addressbookmanager.displayContactsByCity();
                                 break;
 
+                            }
+                        case 10:
+                            {
+                                addressbookmanager.countByState();
+                                break;
+                            }
+                        case 11:
+                            {
+                                addressbookmanager.countByCity();
+                                break;
                             }
                     }
 
