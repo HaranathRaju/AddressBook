@@ -141,6 +141,12 @@ namespace AddressBook
                                 break;
 
                             }
+                        case 9:
+                            {
+                                addressbookmanager.displayContactsByCity();
+                                break;
+
+                            }
                     }
 
                 }
