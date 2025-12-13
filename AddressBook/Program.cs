@@ -27,6 +27,8 @@ namespace AddressBook
                 Console.WriteLine("5.Add Multiple addressbook");
                 Console.WriteLine("6.Display Addressbook");
                 Console.WriteLine("7.search contacts by city");
+                Console.WriteLine("8.display contacts by state");
+                Console.WriteLine("9.display contacts by city");
 
                 Console.WriteLine("enter choice: ");
                 int choice = Convert.ToInt32(Console.ReadLine());
@@ -132,6 +134,12 @@ namespace AddressBook
                                 string city=Console.ReadLine();
                                 addressbookmanager.searchContactByCity(city);
                                 break;
+                            }
+                        case 8:
+                            {
+                                addressbookmanager.displayContactsByState();
+                                break;
+
                             }
                     }
 

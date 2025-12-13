@@ -67,5 +67,26 @@ namespace AddressBook
                 Console.WriteLine("contact not found");
             }
         }
+
+        public void displayContactsByState()
+        {
+            var allcontacts = addressbooks.Values.SelectMany(n => n.getContacts());
+
+            var groupbystatecontacts = allcontacts.GroupBy(p => p.State);
+
+            Dictionary<string, List<Contact>> statedict = groupbystatecontacts.ToDictionary(n => n.Key, n => n.ToList());
+
+            foreach( var i in statedict)
+            {
+                Console.WriteLine(i.Key);
+                foreach(var j in i.Value)
+                {
+                    Console.WriteLine(j);   
+                    
+
+                }
+            }
+        }
+
     }
 }
