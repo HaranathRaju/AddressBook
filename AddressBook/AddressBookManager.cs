@@ -10,8 +10,7 @@ namespace AddressBook
     {
         Dictionary<string,AddressBook> addressbooks=new Dictionary<string, AddressBook> ();
 
-        Dictionary<string,List<Contact>> citydict=new Dictionary<string, List<Contact>>();
-        Dictionary<string,List<Contact>> statedict=new Dictionary<string, List<Contact>>();
+        
 
 
         public void addAddressBook(string name)
