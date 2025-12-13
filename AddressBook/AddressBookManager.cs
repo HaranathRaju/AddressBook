@@ -10,6 +10,10 @@ namespace AddressBook
     {
         Dictionary<string,AddressBook> addressbooks=new Dictionary<string, AddressBook> ();
 
+        Dictionary<string,List<Contact>> citydict=new Dictionary<string, List<Contact>>();
+        Dictionary<string,List<Contact>> statedict=new Dictionary<string, List<Contact>>();
+
+
         public void addAddressBook(string name)
         {
             if (addressbooks.ContainsKey(name))
@@ -45,5 +49,24 @@ namespace AddressBook
             }
         }
 
+        public void searchContactByCity(string city)
+        {
+            bool found = false;
+            foreach(var i in addressbooks.Values)
+            {
+                foreach(var j in i.getContacts())
+                {
+                    if (j.City.Equals(city))
+                    {
+                        Console.WriteLine(j);
+                        found = true;
+                    }
+                }
+            }
+            if (!found)
+            {
+                Console.WriteLine("contact not found");
+            }
+        }
     }
 }

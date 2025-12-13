@@ -10,6 +10,11 @@ namespace AddressBook
     {
         List<Contact> contacts = new List<Contact>();
 
+        public List<Contact> getContacts()
+        {
+            return contacts;
+        }
+
         public void addContact(Contact c)
         {
             foreach(Contact i in contacts)

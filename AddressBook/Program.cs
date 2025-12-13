@@ -26,6 +26,7 @@ namespace AddressBook
                 Console.WriteLine("4.Display contacts");
                 Console.WriteLine("5.Add Multiple addressbook");
                 Console.WriteLine("6.Display Addressbook");
+                Console.WriteLine("7.search contacts by city");
 
                 Console.WriteLine("enter choice: ");
                 int choice = Convert.ToInt32(Console.ReadLine());
@@ -123,6 +124,13 @@ namespace AddressBook
                                         Console.WriteLine($"AddressBook '{name}' selected");
                                 }
 
+                                break;
+                            }
+                        case 7:
+                            {
+                                Console.WriteLine("enter city name: ");
+                                string city=Console.ReadLine();
+                                addressbookmanager.searchContactByCity(city);
                                 break;
                             }
                     }
