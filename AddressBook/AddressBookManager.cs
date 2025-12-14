@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
@@ -11,8 +13,22 @@ namespace AddressBook
     {
         Dictionary<string,AddressBook> addressbooks=new Dictionary<string, AddressBook> ();
 
-        
+        private string dataFile = "AddressBooks.json";
 
+        public void SaveToFile()
+        {
+            string json = JsonSerializer.Serialize(addressbooks, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(dataFile, json);
+        }
+
+        public void LoadFromFile()
+        {
+            if (File.Exists(dataFile))
+            {
+                string json = File.ReadAllText(dataFile);
+                addressbooks = JsonSerializer.Deserialize<Dictionary<string, AddressBook>>(json);
+            }
+        }
 
         public void addAddressBook(string name)
         {
@@ -116,7 +132,6 @@ namespace AddressBook
             {
                 Console.WriteLine("Contacts from "+i.Key +" : "+i.Value);
             }
-
         }
         public void countByCity()
         {
@@ -130,7 +145,6 @@ namespace AddressBook
             {
                 Console.WriteLine("Contacts from "+i.Key + " : " + i.Value);
             }
-
         }
 
         public void sortByName()
@@ -144,8 +158,6 @@ namespace AddressBook
                 Console.WriteLine(i);
             }
         }
-
-
 
         public void sortByState()
         {
@@ -169,7 +181,6 @@ namespace AddressBook
             }
         }
 
-
         public void sortByZip()
         {
             var allcontacts = addressbooks.Values.SelectMany(n => n.getContacts());
@@ -182,7 +193,6 @@ namespace AddressBook
             }
         }
         
-
 
     }
 }

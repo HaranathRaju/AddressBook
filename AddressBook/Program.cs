@@ -36,6 +36,8 @@ namespace AddressBook
                 Console.WriteLine("13.sort contacts by state");
                 Console.WriteLine("14.sort contacts by city");
                 Console.WriteLine("15.sort contacts by zip");
+                Console.WriteLine("16.save addressbooks to file");
+                Console.WriteLine("17.load addressbooks from file");
 
                 Console.WriteLine("enter choice: ");
                 int choice = Convert.ToInt32(Console.ReadLine());
@@ -216,6 +218,18 @@ namespace AddressBook
                             {
                                 Console.WriteLine("contacts sorted by Zip");
                                 addressbookmanager.sortByZip();
+                                break;
+                            }
+                        case 16:
+                            {
+                                addressbookmanager.SaveToFile();
+                                Console.WriteLine("saved addressbooks to file");
+                                break;
+                            }
+                        case 17:
+                            {
+                                Console.WriteLine("displaying file content");
+                                addressbookmanager.LoadFromFile();
                                 break;
                             }
                     }
