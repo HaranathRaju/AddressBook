@@ -8,7 +8,7 @@ namespace AddressBook
 {
     public class AddressBook
     {
-        List<Contact> contacts = new List<Contact>();
+        public List<Contact> contacts { get; set; } = new List<Contact>();
 
         public List<Contact> getContacts()
         {
