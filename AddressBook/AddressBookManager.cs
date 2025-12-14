@@ -27,6 +27,7 @@ namespace AddressBook
             {
                 string json = File.ReadAllText(dataFile);
                 addressbooks = JsonSerializer.Deserialize<Dictionary<string, AddressBook>>(json);
+                Console.WriteLine(json);
             }
         }
 
