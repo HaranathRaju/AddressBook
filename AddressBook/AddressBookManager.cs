@@ -133,5 +133,56 @@ namespace AddressBook
 
         }
 
+        public void sortByName()
+        {
+            var allcontacts = addressbooks.Values.SelectMany(n => n.getContacts());
+
+            var sortbyname = allcontacts.OrderBy(n => n.FirstName).ToList();
+
+            foreach (var i in sortbyname)
+            {
+                Console.WriteLine(i);
+            }
+        }
+
+
+
+        public void sortByState()
+        {
+            var allcontacts = addressbooks.Values.SelectMany(n => n.getContacts());
+            var sortedbystate = allcontacts.OrderBy(n => n.State).ToList();
+
+            foreach (var i in sortedbystate)
+            {
+                Console.WriteLine(i);
+            }
+        }
+
+        public void sortByCity()
+        {
+            var allcontacts = addressbooks.Values.SelectMany(n => n.getContacts());
+            var sortbycity = allcontacts.OrderBy(n => n.City).ToList();
+
+            foreach (var i in sortbycity)
+            {
+                Console.WriteLine(i);
+            }
+        }
+
+
+        public void sortByZip()
+        {
+            var allcontacts = addressbooks.Values.SelectMany(n => n.getContacts());
+
+            var sortbyzip = allcontacts.OrderBy(n => n.Zip);
+
+            foreach( var i in sortbyzip)
+            {
+                Console.WriteLine(i);
+            }
+        }
+        
+
+
     }
 }
